@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { vehicleSchema } from "@/lib/validations/vehicle";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const vehicles = await prisma.vehicle.findMany({
     include: { customer: { include: { user: true } } },
